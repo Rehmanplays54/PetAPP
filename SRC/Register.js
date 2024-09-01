@@ -1,25 +1,33 @@
-import { View, Text, TextComponent, TextInput, Alert } from 'react-native'
+import { View, Text, TextComponent, TextInput } from 'react-native'
 import React, { useState } from 'react'
 import Inputbox from '../Components/inputbox'
 import Button from '../Components/Button'
 
-const Login= () => {
- 
+const Register = () => {
+  const [Name,setName]=useState('')
   const [Email,setEmail]=useState('')
   const [Password,setPassword]=useState('')
   const [loading,setloading]=useState(false)
-
+  const [inputValue, setInputValue] = useState('');
+  const [error, setError] = useState(false);
+const handlepress = () => {
+  if (inputValue === '') {
+      setError(true);
+  } else {
+navigation.navigate('Login')
+  }
+};
 
   const handlesubmit=()=>{
     try{
     setloading(true)
-    if( !Email || !Password)
+    if(!Name|| !Email || !Password)
     {Alert.alert("Please fill All feilds");
         setloading(false)
         return
     }
     setloading(false)
-    console.log("Login",{Email,Password});
+    console.log("Register data", {Name,Email,Password});
     
 } catch(error){
     setloading(false);
@@ -45,8 +53,11 @@ const Login= () => {
           style={{
             fontSize:34
           }}
-          >Login</Text>
-    
+          >Register</Text>
+      <Inputbox inputtitle={'Name'}
+      value={Name}
+      setValue={setName}
+      />
       <Inputbox inputtitle={'Email'}
       keyboardType="email-address"
       autoComplete="email"
@@ -56,14 +67,15 @@ const Login= () => {
       <Inputbox inputtitle={'Password'}
       secureTextEntry={true}
          autoComplete="password"
+
             value={Password}
             setValue={setPassword}
       />
-      <Button inputtitle={'Login'}
-      loading={loading}
-      handlesubmit={handlesubmit}/>
+      <Button  inputtitle={'Register'}
+      
+      />
     </View>
   )
 }
 
-export default Login
+export default Register
