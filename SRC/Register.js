@@ -8,15 +8,15 @@ const Register = () => {
   const [Email,setEmail]=useState('')
   const [Password,setPassword]=useState('')
   const [loading,setloading]=useState(false)
-  const [inputValue, setInputValue] = useState('');
-  const [error, setError] = useState(false);
-const handlepress = () => {
-  if (inputValue === '') {
-      setError(true);
-  } else {
-navigation.navigate('Login')
-  }
-};
+//   const [inputValue, setInputValue] = useState('');
+//   const [error, setError] = useState(false);
+// const handlepress = () => {
+//   if (inputValue === '') {
+//       setError(true);
+//   } else {
+// navigation.navigate('Login')
+//   }
+// };
 
   const handlesubmit=()=>{
     try{
